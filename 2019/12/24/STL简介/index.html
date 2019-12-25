@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>STL容器、算法和迭代器之间的关系 | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="STL,简介">
+    <meta name="description" content="容器   顺序容器 特点描述    vector 从后面快速的插入与删除，直接访问任何元素   deque 从前面或后面快速的插入与删除，直接访问任何元素   list 双链表，从任何地方快速插入与删除      关联容器 特点描述    set 双链表，从任何地方快速插入与删除   multiset 双链表，从任何地方快速插入与删除   map 一对多映射，基于关键字快速查找，不允许重复值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL容器、算法和迭代器之间的关系">
+<meta property="og:url" content="http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="容器   顺序容器 特点描述    vector 从后面快速的插入与删除，直接访问任何元素   deque 从前面或后面快速的插入与删除，直接访问任何元素   list 双链表，从任何地方快速插入与删除      关联容器 特点描述    set 双链表，从任何地方快速插入与删除   multiset 双链表，从任何地方快速插入与删除   map 一对多映射，基于关键字快速查找，不允许重复值">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-24T14:47:07.798Z">
+<meta property="article:modified_time" content="2019-12-25T04:25:10.310Z">
+<meta property="article:author" content="pitaga">
+<meta property="article:tag" content="STL">
+<meta property="article:tag" content="简介">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">pitaga</h5>
+          <a href="mailto:jind_yang@hotmail.com" title="jind_yang@hotmail.com" class="mail">jind_yang@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/pitaga" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">STL容器、算法和迭代器之间的关系</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">STL容器、算法和迭代器之间的关系</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-24T14:47:07.798Z" itemprop="datePublished" class="page-time">
+  2019-12-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#容器"><span class="post-toc-number">1.</span> <span class="post-toc-text">容器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#迭代器"><span class="post-toc-number">2.</span> <span class="post-toc-text">迭代器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#容器常用的算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">容器常用的算法</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-STL简介"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">STL容器、算法和迭代器之间的关系</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-24 22:47:07" datetime="2019-12-24T14:47:07.798Z"  itemprop="datePublished">2019-12-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><table>
+<thead>
+<tr>
+<th align="center">顺序容器</th>
+<th align="center">特点描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">vector</td>
+<td align="center">从后面快速的插入与删除，直接访问任何元素</td>
+</tr>
+<tr>
+<td align="center">deque</td>
+<td align="center">从前面或后面快速的插入与删除，直接访问任何元素</td>
+</tr>
+<tr>
+<td align="center">list</td>
+<td align="center">双链表，从任何地方快速插入与删除</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">关联容器</th>
+<th align="center">特点描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">set</td>
+<td align="center">双链表，从任何地方快速插入与删除</td>
+</tr>
+<tr>
+<td align="center">multiset</td>
+<td align="center">双链表，从任何地方快速插入与删除</td>
+</tr>
+<tr>
+<td align="center">map</td>
+<td align="center">一对多映射，基于关键字快速查找，不允许重复值</td>
+</tr>
+<tr>
+<td align="center">multimap</td>
+<td align="center">一对多映射，基于关键字快速查找，允许重复值</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">容器适配器</th>
+<th align="center">特点描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">stack</td>
+<td align="center">后进先出</td>
+</tr>
+<tr>
+<td align="center">queue</td>
+<td align="center">先进先出</td>
+</tr>
+<tr>
+<td align="center">priority_queue</td>
+<td align="center">最高优先级元素总是第一个出列</td>
+</tr>
+</tbody></table>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>我们使用容器的时候，迭代器是一个不可分割的部分。迭代器在STL中用来将算法和容器联系起来，起着一种胶着剂的作用。迭代器是一种检查容器内元素并遍历元素的数据类型。迭代器是一种行为类似指针的对象，它提供类似指针的功能，对容器成员的内容进行访问。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector &lt;int&gt; ::iterator iter;</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器常用的算法"><a href="#容器常用的算法" class="headerlink" title="容器常用的算法"></a>容器常用的算法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">assign();	// 赋值</span><br><span class="line">empty();	// 容器为空则返回非0值</span><br><span class="line">erase();	// 删除指定位置或指定范围内的元素</span><br><span class="line">push_front();	// 从容器头部插入元素</span><br><span class="line">push_back();	// 从容器尾部插入元素</span><br><span class="line">pop_front();	// 删除第一个元素</span><br><span class="line">pop_back();	// 删除最后一个元素</span><br><span class="line">back();		// 返回最后一个元素的引用</span><br><span class="line">front();	// 返回第一个元素的引用</span><br><span class="line">begin();	// 返回指向第一个元素的游标</span><br><span class="line">end();		// 返回指向最后一个元素后一个位置的游标</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="pitaga">
+            pitaga
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E4%BB%8B/" rel="tag">简介</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL容器、算法和迭代器之间的关系》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/12/24/STL-string/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">string</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>pitaga &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL容器、算法和迭代器之间的关系》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
