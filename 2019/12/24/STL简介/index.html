@@ -14,25 +14,27 @@
     
     
     
-    <title>STL容器、算法和迭代器之间的关系 | Welcome</title>
+    <title>STL简介 | Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="STL">
-    <meta name="description" content="容器   顺序容器 特点描述    vector 从后面快速的插入与删除，直接访问任何元素   deque 从前面或后面快速的插入与删除，直接访问任何元素   list 双链表，从任何地方快速插入与删除      关联容器 特点描述    set 双链表，从任何地方快速插入与删除   multiset 双链表，从任何地方快速插入与删除   map 一对多映射，基于关键字快速查找，不允许重复值">
+    <meta name="description" content="1 学习方法参考网站（三选一即可）123http:&#x2F;&#x2F;www.cplusplus.com&#x2F;http:&#x2F;&#x2F;en.cppreference.com&#x2F;http:&#x2F;&#x2F;gcc.gnu.org&#x2F;  阅读目录12&lt;&lt;the c++ standard library&gt;&gt;&lt;&lt;stl源码剖析&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STL容器、算法和迭代器之间的关系">
+<meta property="og:title" content="STL简介">
 <meta property="og:url" content="http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="Welcome">
-<meta property="og:description" content="容器   顺序容器 特点描述    vector 从后面快速的插入与删除，直接访问任何元素   deque 从前面或后面快速的插入与删除，直接访问任何元素   list 双链表，从任何地方快速插入与删除      关联容器 特点描述    set 双链表，从任何地方快速插入与删除   multiset 双链表，从任何地方快速插入与删除   map 一对多映射，基于关键字快速查找，不允许重复值">
+<meta property="og:description" content="1 学习方法参考网站（三选一即可）123http:&#x2F;&#x2F;www.cplusplus.com&#x2F;http:&#x2F;&#x2F;en.cppreference.com&#x2F;http:&#x2F;&#x2F;gcc.gnu.org&#x2F;  阅读目录12&lt;&lt;the c++ standard library&gt;&gt;&lt;&lt;stl源码剖析&amp;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/STL%E7%AE%80%E4%BB%8B001.png">
 <meta property="article:published_time" content="2019-12-24T14:47:07.798Z">
-<meta property="article:modified_time" content="2019-12-25T11:30:37.246Z">
+<meta property="article:modified_time" content="2019-12-30T11:43:00.292Z">
 <meta property="article:author" content="pitaga">
 <meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/STL%E7%AE%80%E4%BB%8B001.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -111,7 +113,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">STL容器、算法和迭代器之间的关系</div>
+        <div class="flex-col header-title ellipsis">STL简介</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -133,7 +135,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">STL容器、算法和迭代器之间的关系</h1>
+        <h1 class="title">STL简介</h1>
         <h5 class="subtitle">
             
                 <time datetime="2019-12-24T14:47:07.798Z" itemprop="datePublished" class="page-time">
@@ -158,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#容器"><span class="post-toc-number">1.</span> <span class="post-toc-text">容器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#迭代器"><span class="post-toc-number">2.</span> <span class="post-toc-text">迭代器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#容器常用的算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">容器常用的算法</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-学习方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">1 学习方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参考网站（三选一即可）"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">参考网站（三选一即可）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阅读目录"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">阅读目录</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-六大部件"><span class="post-toc-number">2.</span> <span class="post-toc-text">2 六大部件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-六大部件的关系"><span class="post-toc-number">3.</span> <span class="post-toc-text">3 六大部件的关系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特别注意点"><span class="post-toc-number">4.</span> <span class="post-toc-text">特别注意点</span></a></li></ol>
         </nav>
     </aside>
 
@@ -167,7 +169,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">STL容器、算法和迭代器之间的关系</h1>
+        <h1 class="post-card-title">STL简介</h1>
         <div class="post-meta">
             <time class="post-time" title="2019-12-24 22:47:07" datetime="2019-12-24T14:47:07.798Z"  itemprop="datePublished">2019-12-24</time>
 
@@ -180,74 +182,42 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><table>
-<thead>
-<tr>
-<th align="center">顺序容器</th>
-<th align="center">特点描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">vector</td>
-<td align="center">从后面快速的插入与删除，直接访问任何元素</td>
-</tr>
-<tr>
-<td align="center">deque</td>
-<td align="center">从前面或后面快速的插入与删除，直接访问任何元素</td>
-</tr>
-<tr>
-<td align="center">list</td>
-<td align="center">双链表，从任何地方快速插入与删除</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="center">关联容器</th>
-<th align="center">特点描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">set</td>
-<td align="center">双链表，从任何地方快速插入与删除</td>
-</tr>
-<tr>
-<td align="center">multiset</td>
-<td align="center">双链表，从任何地方快速插入与删除</td>
-</tr>
-<tr>
-<td align="center">map</td>
-<td align="center">一对多映射，基于关键字快速查找，不允许重复值</td>
-</tr>
-<tr>
-<td align="center">multimap</td>
-<td align="center">一对多映射，基于关键字快速查找，允许重复值</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="center">容器适配器</th>
-<th align="center">特点描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">stack</td>
-<td align="center">后进先出</td>
-</tr>
-<tr>
-<td align="center">queue</td>
-<td align="center">先进先出</td>
-</tr>
-<tr>
-<td align="center">priority_queue</td>
-<td align="center">最高优先级元素总是第一个出列</td>
-</tr>
-</tbody></table>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>我们使用容器的时候，迭代器是一个不可分割的部分。迭代器在STL中用来将算法和容器联系起来，起着一种胶着剂的作用。迭代器是一种检查容器内元素并遍历元素的数据类型。迭代器是一种行为类似指针的对象，它提供类似指针的功能，对容器成员的内容进行访问。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector &lt;int&gt; ::iterator iter;</span><br></pre></td></tr></table></figure>
+            <h2 id="1-学习方法"><a href="#1-学习方法" class="headerlink" title="1 学习方法"></a>1 学习方法</h2><h4 id="参考网站（三选一即可）"><a href="#参考网站（三选一即可）" class="headerlink" title="参考网站（三选一即可）"></a>参考网站（三选一即可）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.cplusplus.com&#x2F;</span><br><span class="line">http:&#x2F;&#x2F;en.cppreference.com&#x2F;</span><br><span class="line">http:&#x2F;&#x2F;gcc.gnu.org&#x2F;</span><br></pre></td></tr></table></figure>
 
-<h2 id="容器常用的算法"><a href="#容器常用的算法" class="headerlink" title="容器常用的算法"></a>容器常用的算法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">assign();	// 赋值</span><br><span class="line">empty();	// 容器为空则返回非0值</span><br><span class="line">erase();	// 删除指定位置或指定范围内的元素</span><br><span class="line">push_front();	// 从容器头部插入元素</span><br><span class="line">push_back();	// 从容器尾部插入元素</span><br><span class="line">pop_front();	// 删除第一个元素</span><br><span class="line">pop_back();	// 删除最后一个元素</span><br><span class="line">back();		// 返回最后一个元素的引用</span><br><span class="line">front();	// 返回第一个元素的引用</span><br><span class="line">begin();	// 返回指向第一个元素的游标</span><br><span class="line">end();		// 返回指向最后一个元素后一个位置的游标</span><br></pre></td></tr></table></figure>
+<h4 id="阅读目录"><a href="#阅读目录" class="headerlink" title="阅读目录"></a>阅读目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;the c++ standard library&gt;&gt;</span><br><span class="line">&lt;&lt;stl源码剖析&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-六大部件"><a href="#2-六大部件" class="headerlink" title="2 六大部件"></a>2 六大部件</h2><ul>
+<li><strong>容器(Containers)</strong>——很好的帮我们解决了<strong>内存分配</strong>的问题。</li>
+<li>分配器(Allocators)——为了<strong>支持容器</strong>而产生</li>
+<li><strong>算法(algorithms)</strong>——容器常用的<strong>操作集合</strong>，排序、查找等</li>
+<li>迭代器(Iterators)——一组<strong>泛化的指针</strong></li>
+<li>适配器(Adapters)——可以对<strong>容器、迭代器和仿函数</strong>进行转换，相当于一个变压器</li>
+<li>仿函式(Functors)——作用上来说是一个函数</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/12/24/STL%E7%AE%80%E4%BB%8B/STL简介001.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="3-六大部件的关系"><a href="#3-六大部件的关系" class="headerlink" title="3 六大部件的关系"></a>3 六大部件的关系</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#inculde <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ia[<span class="number">6</span>] = &#123;<span class="number">27</span>, <span class="number">210</span>, <span class="number">12</span>, <span class="number">47</span>, <span class="number">109</span>, <span class="number">83</span> &#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>, allocator&lt;<span class="keyword">int</span>&gt;&gt; vi(ia, ia+<span class="number">6</span>);	<span class="comment">// 容器、分配器部件</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;count_if(vi.<span class="built_in">begin</span>(), vi.<span class="built_in">end</span>(), 	<span class="comment">// 迭代器部件，count_if算法</span></span><br><span class="line">                   not1(bind2nd(less&lt;<span class="keyword">int</span>&gt;(), <span class="number">40</span>)));	<span class="comment">// 函数式部件</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 功能描述：输出数组ia中不小于40的元素个数。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="特别注意点"><a href="#特别注意点" class="headerlink" title="特别注意点"></a>特别注意点</h2><ul>
+<li>前闭后开——标准库规定所有容器的<strong>迭代器</strong>遵循<strong>前闭后开</strong>原则，容器的空间<strong>不一定连续</strong></li>
+<li>range-based for statment  (since C++ 11)</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (decl : coll) &#123; statment; &#125;		<span class="comment">// 自C++ 11标准起</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i : &#123; <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> &#125;) &#123;	<span class="comment">// 实例</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>auto关键字(since C++ 11)</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> elem : vec) &#123;		<span class="comment">// vec中值不改变</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;elem&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span>&amp; elem: vec) &#123;		<span class="comment">// vec中值发生改变</span></span><br><span class="line">    elem *= <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>&lt;<span class="built_in">string</span>&gt; c;</span><br><span class="line"><span class="keyword">auto</span> ite = ::<span class="built_in">find</span>(c.<span class="built_in">begin</span>(), c.<span class="built_in">end</span>(), target);	<span class="comment">// ::起全局作用域的作用</span></span><br></pre></td></tr></table></figure>
+
+
         </div>
 
         <blockquote class="post-copyright">
@@ -275,7 +245,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL简介》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -285,7 +255,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL简介》 — Welcome&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -295,7 +265,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL容器、算法和迭代器之间的关系》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL简介》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -323,9 +293,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2019/12/24/string/" id="post-prev" class="post-nav-link">
+      <a href="/2019/12/30/%E5%AE%B9%E5%99%A8%E7%AE%80%E4%BB%8B/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">顺序容器-string</h4>
+        <h4 class="title">容器结构与分类</h4>
       </a>
     </div>
   
@@ -390,7 +360,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL简介》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -400,7 +370,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL容器、算法和迭代器之间的关系》 — Welcome&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&title=《STL简介》 — Welcome&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -410,7 +380,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL容器、算法和迭代器之间的关系》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《STL简介》 — Welcome&url=http://yoursite.com/2019/12/24/STL%E7%AE%80%E4%BB%8B/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
