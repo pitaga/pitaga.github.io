@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>分配器 | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="STL,Allocators">
+    <meta name="description" content="operator new() 和 malloc() 申请内存所在的位置不同 new操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存。自由存储区是C++基于new操作符的一个抽象概念，凡是通过new操作符进行内存申请，该内存即为自由存储区。而堆是操作系统中的术语，是操作系统所维护的一块特殊内存，用于程序的内存动态分配，C语言使用malloc从堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分配器">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="operator new() 和 malloc() 申请内存所在的位置不同 new操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存。自由存储区是C++基于new操作符的一个抽象概念，凡是通过new操作符进行内存申请，该内存即为自由存储区。而堆是操作系统中的术语，是操作系统所维护的一块特殊内存，用于程序的内存动态分配，C语言使用malloc从堆">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-31T13:15:44.528Z">
+<meta property="article:modified_time" content="2019-12-31T14:22:37.888Z">
+<meta property="article:author" content="pitaga">
+<meta property="article:tag" content="STL">
+<meta property="article:tag" content="Allocators">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">pitaga</h5>
+          <a href="mailto:jind_yang@hotmail.com" title="jind_yang@hotmail.com" class="mail">jind_yang@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/pitaga" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">分配器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">分配器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-31T13:15:44.528Z" itemprop="datePublished" class="page-time">
+  2019-12-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#operator-new-和-malloc"><span class="post-toc-number">1.</span> <span class="post-toc-text">operator new() 和 malloc()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VC6-的Allocator"><span class="post-toc-number">2.</span> <span class="post-toc-text">VC6 的Allocator</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BC5-的Allocator"><span class="post-toc-number">3.</span> <span class="post-toc-text">BC5 的Allocator</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特别注意点"><span class="post-toc-number">4.</span> <span class="post-toc-text">特别注意点</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-分配器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">分配器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-31 21:15:44" datetime="2019-12-31T13:15:44.528Z"  itemprop="datePublished">2019-12-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="operator-new-和-malloc"><a href="#operator-new-和-malloc" class="headerlink" title="operator new() 和 malloc()"></a>operator new() 和 malloc()</h2><ul>
+<li><p><strong>申请内存所在的位置不同</strong></p>
+<p>new操作符从<strong>自由存储区（free store）</strong>上为对象动态分配内存空间，而malloc函数从<strong>堆</strong>上动态分配内存。自由存储区是C++基于new操作符的一个抽象概念，凡是通过new操作符进行内存申请，该内存即为自由存储区。而堆是操作系统中的术语，是操作系统所维护的一块特殊内存，用于程序的内存动态分配，C语言使用malloc从堆上分配内存，使用free释放已分配的对应内存。</p>
+</li>
+<li><p><strong>返回安全性不同</strong></p>
+<p>new操作符内存分配成功时，返回的是对象类型的指针，类型严格与对象匹配，无须进行类型转换，故new是符合<strong>类型安全</strong>性的操作符。而malloc内存分配成功则是返回void * ，需要通过强制类型转换将void*指针转换成我们需要的类型。<br>类型安全很大程度上可以等价于内存安全，类型安全的代码不会试图方法自己没被授权的内存区域。关于C++的类型安全性可说的又有很多了。</p>
+</li>
+<li><p><strong>内存分配失败时返回的值不同</strong></p>
+<p>new内存分配失败时，会抛出bac_alloc异常，它<strong>不会返回NULL</strong>；malloc分配内存失败时返回NULL。</p>
+</li>
+<li><p><strong>是否需要指定内存的大小</strong></p>
+<p>使用new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息自行计算，而malloc则需要显式地指出所需内存的尺寸。</p>
+</li>
+<li><p><strong>是否调用构造/析构函数</strong></p>
+<p>总之来说，new/delete会调用对象的构造函数/析构函数以完成对象的构造/析构。而malloc则不会。</p>
+<p>使用new操作符来分配对象内存时会经历三个步骤：</p>
+<ul>
+<li>第一步：调用operator new 函数（对于数组是operator new[]）分配一块足够大的，<strong>原始</strong>的，未命名的内存空间以便存储特定类型的对象。</li>
+<li>第二步：编译器运行相应的<strong>构造函数</strong>以构造对象，并为其传入初值。</li>
+<li>第三部：对象构造完成后，返回一个指向该对象的指针。</li>
+</ul>
+<p>使用delete操作符来释放对象内存时会经历两个步骤：</p>
+<ul>
+<li>第一步：调用对象的析构函数。</li>
+<li>第二步：编译器调用operator delete(或operator delete[])函数释放内存空间。</li>
+</ul>
+</li>
+<li><p><strong>是否可以被重载</strong></p>
+<p>opeartor new /operator delete可以被重载。而malloc/free并<strong>不允许重载</strong>。</p>
+</li>
+<li><p><strong>能够直观地重新分配内存</strong></p>
+<p>使用malloc分配的内存后，如果在使用过程中发现内存不足，可以使用realloc函数进行内存重新分配实现内存的扩充。realloc先判断当前的指针所指内存是否有足够的连续空间，如果有，原地扩大可分配的内存地址，并且返回原来的地址指针；如果空间不够，先按照新指定的大小分配空间，将原有数据从头到尾拷贝到新分配的内存区域，而后释放原来的内存区域。</p>
+<p>new没有这样直观的配套设施来扩充内存。</p>
+</li>
+<li><p><strong>总结</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">特征</th>
+<th align="center">new/delete</th>
+<th align="center">malloc/free</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">分配内存的位置</td>
+<td align="center">自由存储区</td>
+<td align="center">堆</td>
+</tr>
+<tr>
+<td align="center">内存分配成功返回值</td>
+<td align="center">完整类型指针</td>
+<td align="center">void*</td>
+</tr>
+<tr>
+<td align="center">内存分配失败返回值</td>
+<td align="center">默认抛出异常类</td>
+<td align="center">返回NULL</td>
+</tr>
+<tr>
+<td align="center">分配内存的大小</td>
+<td align="center">由编译器根据类型计算</td>
+<td align="center">必须显示指定字节数</td>
+</tr>
+<tr>
+<td align="center">处理数组</td>
+<td align="center">有处理数组的版本new[]</td>
+<td align="center">需要用户计算数组的大小后进行内存分配</td>
+</tr>
+<tr>
+<td align="center">重新分配内存</td>
+<td align="center">无法直观地处理</td>
+<td align="center">使用realloc简单完成</td>
+</tr>
+<tr>
+<td align="center">相互调用</td>
+<td align="center">new/delete在内部调用malloc/free</td>
+<td align="center">无法调用new/delete</td>
+</tr>
+<tr>
+<td align="center">分配内存不足</td>
+<td align="center">可以指定处理函数或重新制定分配器</td>
+<td align="center">无法通过用户代码进行处理</td>
+</tr>
+<tr>
+<td align="center">重载</td>
+<td align="center">允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">构造/析构函数</td>
+<td align="center">调用</td>
+<td align="center">不调用</td>
+</tr>
+</tbody></table>
+<h2 id="VC6-的Allocator"><a href="#VC6-的Allocator" class="headerlink" title="VC6 的Allocator"></a>VC6 的Allocator</h2><p>VC6的allocator只是以<code>::operator new</code>和<code>::operator delete</code>完成<code>allocate()</code>和<code>deallocate()</code>，没有任何特殊设计。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分配个512int</span></span><br><span class="line"><span class="keyword">int</span>* p = allocator&lt;<span class="keyword">int</span>&gt;().allocate(<span class="number">512</span>, (<span class="keyword">int</span>*)<span class="number">0</span>);</span><br><span class="line">allocator&lt;<span class="keyword">int</span>&gt;().deallocate(p, <span class="number">512</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="BC5-的Allocator"><a href="#BC5-的Allocator" class="headerlink" title="BC5 的Allocator"></a>BC5 的Allocator</h2><p>BC++的allocator只是以<code>::operator new</code>和<code>::operator delete</code>完成<code>allocate()</code>和<code>deallocate()</code>，没有任何特殊设计。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分配512个int</span></span><br><span class="line"><span class="keyword">int</span>* p = allocator&lt;<span class="keyword">int</span>&gt;().allocate(<span class="number">512</span>);</span><br><span class="line">allocator&lt;<span class="keyword">int</span>&gt;().deallocate(p, <span class="number">512</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="特别注意点"><a href="#特别注意点" class="headerlink" title="特别注意点"></a>特别注意点</h2><ul>
+<li><p>G2.9中非常高效的<code>alloc</code>分配器在G4.9版本中式<code>_pool_alloc</code>。而且不在标准库中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>, _gun_cxx::_pool_alloc&lt;<span class="built_in">string</span>&gt;&gt; vec;	<span class="comment">// 预设默认不适用_pool_alloc分配器</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="pitaga">
+            pitaga
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Allocators/" rel="tag">Allocators</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&title=《分配器》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&title=《分配器》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分配器》 — Welcome&url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">操作符重载</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>pitaga &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&title=《分配器》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&title=《分配器》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《分配器》 — Welcome&url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"display":{"position":"left","width":250,"heigth":280},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

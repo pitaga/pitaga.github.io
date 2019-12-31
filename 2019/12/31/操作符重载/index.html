@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>操作符重载 | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="STL,overload">
+    <meta name="description" content="重要操作重载1234reference operator*() const &amp;#123; return (*node).data; &amp;#125;pointer operator-&gt;() const &amp;#123; return &amp;(operator*()); &amp;#125;self&amp; operator++() &amp;#123; node &#x3D; (link_type)((*node).n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作符重载">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="重要操作重载1234reference operator*() const &amp;#123; return (*node).data; &amp;#125;pointer operator-&gt;() const &amp;#123; return &amp;(operator*()); &amp;#125;self&amp; operator++() &amp;#123; node &#x3D; (link_type)((*node).n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-31T12:15:41.672Z">
+<meta property="article:modified_time" content="2019-12-31T14:22:27.425Z">
+<meta property="article:author" content="pitaga">
+<meta property="article:tag" content="STL">
+<meta property="article:tag" content="overload">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">pitaga</h5>
+          <a href="mailto:jind_yang@hotmail.com" title="jind_yang@hotmail.com" class="mail">jind_yang@hotmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/pitaga" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">操作符重载</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">操作符重载</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-12-31T12:15:41.672Z" itemprop="datePublished" class="page-time">
+  2019-12-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重要操作重载"><span class="post-toc-number">1.</span> <span class="post-toc-text">重要操作重载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类模板-Class-Templates"><span class="post-toc-number">2.</span> <span class="post-toc-text">类模板(Class Templates)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数模板-Function-Templates"><span class="post-toc-number">3.</span> <span class="post-toc-text">函数模板(Function Templates)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#成员模板-Member-Templates"><span class="post-toc-number">4.</span> <span class="post-toc-text">成员模板(Member Templates)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特化"><span class="post-toc-number">5.</span> <span class="post-toc-text">特化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#偏特化"><span class="post-toc-number">6.</span> <span class="post-toc-text">偏特化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特别注意点"><span class="post-toc-number">7.</span> <span class="post-toc-text">特别注意点</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-操作符重载"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">操作符重载</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-31 20:15:41" datetime="2019-12-31T12:15:41.672Z"  itemprop="datePublished">2019-12-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/C/">C++</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="重要操作重载"><a href="#重要操作重载" class="headerlink" title="重要操作重载"></a>重要操作重载</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reference <span class="keyword">operator</span>*() <span class="keyword">const</span> &#123; <span class="keyword">return</span> (*node).data; &#125;</span><br><span class="line">pointer <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span> &#123; <span class="keyword">return</span> &amp;(<span class="keyword">operator</span>*()); &#125;</span><br><span class="line">self&amp; <span class="keyword">operator</span>++() &#123; node = (link_type)((*node).next); <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">self <span class="keyword">operator</span>++(<span class="keyword">int</span>) &#123; self tmp = *<span class="keyword">this</span>; ++*<span class="keyword">this</span>; <span class="keyword">return</span> tmp; &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="类模板-Class-Templates"><a href="#类模板-Class-Templates" class="headerlink" title="类模板(Class Templates)"></a>类模板(Class Templates)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设计一个复数类</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;	<span class="comment">// typename is a keyword</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">complex</span> (T r = <span class="number">0</span>, T i = <span class="number">0</span>;)</span><br><span class="line">        : re(r), im(i) &#123;&#125;</span><br><span class="line">    <span class="built_in">complex</span>&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">    <span class="function">T <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br><span class="line">    <span class="function">T <span class="title">imag</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> im; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    T re, im;</span><br><span class="line">	<span class="keyword">friend</span> <span class="built_in">complex</span>&amp; _doapl (<span class="built_in">complex</span>*, <span class="keyword">const</span> <span class="built_in">complex</span>&amp;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 功能使用</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">complex</span>&lt;<span class="keyword">double</span>&gt; c1(<span class="number">2.5</span>, <span class="number">1.5</span>);</span><br><span class="line">    <span class="built_in">complex</span>&lt;<span class="keyword">int</span>&gt; c2(<span class="number">2</span>, <span class="number">6</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="函数模板-Function-Templates"><a href="#函数模板-Function-Templates" class="headerlink" title="函数模板(Function Templates)"></a>函数模板(Function Templates)</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">stone</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    stone (<span class="keyword">int</span> w, <span class="keyword">int</span> h, <span class="keyword">int</span> we)</span><br><span class="line">        : _w(w), _h(h), _weight(we) &#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> stone&amp; rhs) <span class="keyword">const</span> &#123; <span class="keyword">return</span> _weight &lt; rhs._weight; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> _w, _h, _weight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;		// 和<span class="title">typename</span>功能完全一样</span></span><br><span class="line"><span class="class"><span class="title">inline</span></span></span><br><span class="line"><span class="class"><span class="title">const</span> <span class="title">T</span>&amp; <span class="title">min</span>(<span class="title">const</span> <span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">cosnt</span> <span class="title">T</span>&amp; <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">return</span> b &lt; a ? b : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 功能使用</span></span><br><span class="line">&#123;</span><br><span class="line">    stone r1(2, 3), r2(3, 3), r3;</span><br><span class="line">    r3 = <span class="built_in">min</span>(r1, r2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="成员模板-Member-Templates"><a href="#成员模板-Member-Templates" class="headerlink" title="成员模板(Member Templates)"></a>成员模板(Member Templates)</h2><p>知道存在即可。</p>
+<h2 id="特化"><a href="#特化" class="headerlink" title="特化"></a>特化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">Key</span>&gt; <span class="title">struct</span> <span class="title">hash</span> &#123;</span>&#125;;	<span class="comment">// 泛化</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_STL_TEMPLATE_NULL <span class="class"><span class="keyword">struct</span> <span class="title">hash</span>&lt;char&gt; &#123;</span>	<span class="comment">// 特化</span></span><br><span class="line">    <span class="keyword">size_t</span> <span class="keyword">operator</span>() (<span class="keyword">char</span> x) <span class="keyword">const</span> &#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;</span><br><span class="line">_STL_TEMPLATE_NULL <span class="class"><span class="keyword">struct</span> <span class="title">hash</span>&lt;short&gt; &#123;</span>	<span class="comment">// 特化</span></span><br><span class="line">    <span class="keyword">size_t</span> <span class="keyword">operator</span>() (short x) <span class="keyword">const</span> &#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="偏特化"><a href="#偏特化" class="headerlink" title="偏特化"></a>偏特化</h2><p>。。。</p>
+<h2 id="特别注意点"><a href="#特别注意点" class="headerlink" title="特别注意点"></a>特别注意点</h2><ul>
+<li><p>不能够重载的操作符——<code>::</code>(作用域操作符)，<code>.</code>(点操作符)，<code>.*和-&gt;*</code>(指向成员操作的指针操作符)，<code>? :</code>(条件操作符)，<code>#</code>(预处理运算符)</p>
+<p><strong>注：</strong><code>.和.*</code>运算符不能重载是为了保证访问成员的功能不能被改变，域运算符合<code>sizeof</code>运算符的运算对象是类型而不是变量或一般表达式，不具备重载的特征。</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="pitaga">
+            pitaga
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/overload/" rel="tag">overload</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&title=《操作符重载》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&title=《操作符重载》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《操作符重载》 — Welcome&url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/12/31/%E5%88%86%E9%85%8D%E5%99%A8/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">分配器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/12/31/OOP%E4%B8%8EGP%E5%AF%B9%E6%AF%94/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">OOP与GP的对比</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>pitaga &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&title=《操作符重载》 — Welcome&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&title=《操作符重载》 — Welcome&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《操作符重载》 — Welcome&url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/12/31/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"display":{"position":"left","width":250,"heigth":280},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
